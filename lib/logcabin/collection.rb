@@ -37,7 +37,7 @@ module LogCabin
         file_path = File.join(dir, "#{name}.rb")
         return file_path if File.exist? file_path
       end
-      fail("Module #{method} not found")
+      fail("Module #{name} not found")
     end
   end
 end
