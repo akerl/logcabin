@@ -6,6 +6,7 @@ module LogCabin
 
     def initialize(params = {})
       @load_path = params[:load_path] || fail('Load path must be provided')
+      @load_path = [@load_path] if @load_path.is_a? String
       @modules = {}
     end
 
