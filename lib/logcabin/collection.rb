@@ -18,6 +18,8 @@ module LogCabin
       require file
       class_name = parse_class_name(name)
       @modules[name] = LogCabin::Modules.const_get(class_name)
+    rescue LoadError
+      raise("Error while loading #{name}")
     end
 
     private
