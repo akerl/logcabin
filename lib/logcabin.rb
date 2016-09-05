@@ -14,6 +14,37 @@ module LogCabin
   # Empty module for namespacing dynamic modules
   module Modules
   end
+
+  ##
+  # Basic collection object for subclassing
+  class BaseCollection
+    def initialize(_)
+      @modules = {}
+    end
+
+    private
+
+    def cache(name)
+      @modules[name] ||= yield
+    end
+
+    def load_class(name)
+      require name
+      class_name = parse_class_name(name)
+      LogCabin::Modules.const_get(class_name)
+    rescue LoadError
+      raise("Error while loading #{name}")
+    end
+
+    ##
+    # Convert file name to class name
+    # Borrowed with love from Homebrew: http://git.io/vEoDg
+    def parse_class_name(name)
+      class_name = name.to_s.capitalize
+      class_name.gsub(/[-_.\s]([a-zA-Z0-9])/) { Regexp.last_match[1].upcase }
+    end
+  end
 end
 
-require 'logcabin/collection'
+require 'logcabin/dircollection'
+require 'logcabin/gemcollection'
