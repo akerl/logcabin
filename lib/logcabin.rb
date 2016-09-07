@@ -28,7 +28,7 @@ module LogCabin
       @modules[name] ||= yield
     end
 
-    def load_class(name)
+    def load_class_from_module(name)
       require name
       class_name = parse_class_name(name)
       LogCabin::Modules.const_get(class_name)
