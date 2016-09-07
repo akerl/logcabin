@@ -6,7 +6,7 @@ module LogCabin
     # Insert a helper .new() method for creating a new Cache object
 
     def new(*args)
-      self::Collection.new(*args)
+      self::DirCollection.new(*args)
     end
   end
 
