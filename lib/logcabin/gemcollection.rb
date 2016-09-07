@@ -10,7 +10,7 @@ module LogCabin
     ##
     # Method for finding modules to load
     def find(name)
-      cache(name) { load_class_from_module("#{@prefix}-#{name}") }
+      cache(name) { load_class_from_module("#{@prefix}-#{name}", name) }
     end
   end
 end

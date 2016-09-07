@@ -28,12 +28,12 @@ module LogCabin
       @modules[name] ||= yield
     end
 
-    def load_class_from_module(name)
-      require name
+    def load_class_from_module(mod_name, name)
+      require mod_name
       class_name = parse_class_name(name)
       LogCabin::Modules.const_get(class_name)
     rescue LoadError
-      raise("Error while loading #{name}")
+      raise("Error while loading #{mod_name} / #{class_name}")
     end
 
     ##

@@ -13,7 +13,7 @@ module LogCabin
     ##
     # Method for finding modules to load
     def find(name)
-      cache(name) { load_class_from_module(find_file(name)) }
+      cache(name) { load_class_from_module(find_file(name), name) }
     end
 
     private
