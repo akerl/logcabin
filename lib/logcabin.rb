@@ -48,3 +48,4 @@ end
 
 require 'logcabin/dircollection'
 require 'logcabin/gemcollection'
+require 'logcabin/setcollection'
