@@ -22,7 +22,7 @@ module LogCabin
 
     def safe_find(child, name)
       child.find(name)
-    rescue # rubocop:disable Lint/RescueWithoutErrorClass
+    rescue # rubocop:disable Style/RescueStandardError:
       nil
     end
   end
