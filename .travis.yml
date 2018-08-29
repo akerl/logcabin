@@ -1,0 +1,10 @@
+dist: trusty
+install:
+- for i in $(cat .circle-ruby) ; do rvm install $i || exit 1 ; done
+- for i in $(cat .circle-ruby) ; do rvm-exec $i bundle install || exit 1 ; done
+script:
+- for i in $(cat .circle-ruby) ; do rvm-exec $i bundle exec rake || exit 1 ; done
+notifications:
+  email: false
+  slack:
+    secure: jrZZ0YYsUtGtSKoVD59OEfzXviaQbXUGZEPcGxe4F+2Iao9lYk5CXEQnMo7bGxOq/Loy8mK/m3BPvAVsIsPEvVkrA3nilFSwDm1S3VoXKpNhufKD77E0pQk8EZfDYzDU4f6ibIcUCs/JWQb78MsD/uC+kJ7kTwAI342FZ30Q3P/Aio9OqjFimHkqcPgE62OAdPCXBQzxvTO1/jf2xm6gMb/ESK2xLj5H1C0bQGdMzNG77c39pCDCuka17gD0Eh8rS/whEMUWTUumDFuXyZqCFwgEESLX6Okb5SPjsS3EhEnTc4rPDyA7YwvOwto2KNEr5RAVVj6W8GIerX5DziL81zadd1pQ+qPbGQzczqSnZRBQtrlx9L8DACsbhY2dLOwp/76JD8vMtcwIj6DjQd1lRB19YJ/jF6TrpGsbwrDXMeDr5soeuTm0yMmD2B4ZIJM98ecmfVPQDx1SAFzCSgwgNN4eytkpYlLuFVsR7BqzLWPIwuIoVIAf9Ens/FZ1pqIAcAqTFxlX3edCNa2W460PPdBVGx0Mo6X+UIpMQjmvXpaSF0X/yxe/S07hBF1Is2xj/GNUzWpUB2/t0K9ygyifhV0N6cC+kyu1QvCtmul2So4oHt3qV0ftQXYeAStPuxxZ+VaITHAFwdQnuQSt0ekHyXDgTKygTYukOfoUxv5EeBI=
